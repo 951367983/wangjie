@@ -296,7 +296,10 @@ function renderGrid(){
   var grid = document.getElementById('grid');
   var html = '';
   var visible = 0;
-  archives.forEach(function(a){
+  var sorted = archives.slice().sort(function(x,y){
+    return String(y.date||'').localeCompare(String(x.date||''));
+  });
+  sorted.forEach(function(a){
     var pricing = a.pricing || '';
     var ok = (filter==='all' || pricing===filter || (filter==='部分定价' && pricing==='已部分定价')) &&
              (!q || (a.search||'').toLowerCase().indexOf(q)>=0 || (a.title||'').toLowerCase().indexOf(q)>=0);

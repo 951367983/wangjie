@@ -419,7 +419,7 @@ function mergeIncoming(incoming, sourceLabel, fromRemote){
 
 /* ---------- 联网更新 ---------- */
 function getSavedUrl(){
-  try { return localStorage.getItem('tcdb_src_url') || 'https://951367983.github.io/wangjie/data.json'; } catch(e){ return 'https://951367983.github.io/wangjie/data.json'; }
+  try { return localStorage.getItem('tcdb_src_url') || ''; } catch(e){ return ''; }
 }
 function setSavedUrl(u){
   try { localStorage.setItem('tcdb_src_url', u); } catch(e){}
@@ -494,7 +494,6 @@ function bind(){
     });
   });
   document.getElementById('btn-update').addEventListener('click', doUpdate);
-  document.getElementById('src-url').value = getSavedUrl();
   document.getElementById('btn-settings').addEventListener('click', function(){
     var p = document.getElementById('setpanel');
     p.classList.toggle('open');
